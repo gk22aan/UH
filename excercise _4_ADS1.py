@@ -5,6 +5,8 @@ Spyder Editor
 This is a temporary script file.
 """
 
+# Excercise 2.a,b,c
+
 import numpy as np
 import pandas as pd
 import clean_up as cl
@@ -33,8 +35,10 @@ print(df_counts)
 
 
 #save as CSV ***
-#df_counts.to_csv('words_count.csv', index = false)
+df_counts.to_csv('words_count.csv')
 
+
+# Excercise 2.d.e
 print(len(df_words))
 print(df_words.count())  
 
@@ -44,10 +48,27 @@ counter = 0
 for line in data:
     words = line.split()
     counter += 1
-    all_char.append(words)
+    for word in words:
+        word = cl.clean(word)
+        letters = list(word)
+        for letter in letters:
+            all_char.append(letter)
 
 
 print(all_char)
+
+df_letters = pd.DataFrame(all_char, columns = ('letters',))
+print(len(df_letters))
+
+
+df_counts_let = df_letters['letters'].value_counts
+df_counts_let
+
+
+
+
+
+
     
    
     
